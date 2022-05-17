@@ -32,6 +32,9 @@ regressor.fit(X_train, y_train)
 y_pred = regressor.predict(X_test)
 np.set_printoptions(precision=2)
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
+
+
+
 # Making a single prediction
 # (for example the profit of a startup with R&D Spend = 160000, Administration Spend = 130000,
 # Marketing Spend = 300000 and State = 'California')
