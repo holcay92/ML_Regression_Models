@@ -27,6 +27,11 @@ print(X_train)
 print(X_test)
 
 # Training the Kernel SVM model on the Training set
+
+# The only difference between svm and kernel implementation is the kernel parameter uses the RBF kernel
+# and svmpy uses the linear kernel
+
+
 from sklearn.svm import SVC
 classifier = SVC(kernel = 'rbf', random_state = 0)
 classifier.fit(X_train, y_train)
