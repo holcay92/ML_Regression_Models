@@ -1,4 +1,4 @@
-# Support Vector Machine (SVM)
+# Kernel SVM
 
 # Importing the libraries
 import numpy as np
@@ -26,9 +26,9 @@ X_test = sc.transform(X_test)
 print(X_train)
 print(X_test)
 
-# Training the SVM model on the Training set
+# Training the Kernel SVM model on the Training set
 from sklearn.svm import SVC
-classifier = SVC(kernel = 'linear', random_state = 0)
+classifier = SVC(kernel = 'rbf', random_state = 0)
 classifier.fit(X_train, y_train)
 
 # Predicting a new result
@@ -41,7 +41,7 @@ print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
-print("Confusion matrix: \n", cm)
+print(cm)
 accuracy_score(y_test, y_pred)
 
 # Visualising the Training set results
@@ -55,7 +55,7 @@ plt.xlim(X1.min(), X1.max())
 plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1], c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('SVM (Training set)')
+plt.title('Kernel SVM (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -70,10 +70,9 @@ plt.contourf(X1, X2, classifier.predict(sc.transform(np.array([X1.ravel(), X2.ra
              alpha = 0.75, cmap = ListedColormap(('red', 'green')))
 plt.xlim(X1.min(), X1.max())
 plt.ylim(X2.min(), X2.max())
-
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1], c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('SVM (Test set)')
+plt.title('Kernel SVM (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
